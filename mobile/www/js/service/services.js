@@ -6,33 +6,33 @@ _angular.factory("loginService", function ($state, $http, myPopover, myLoading,$
       //return ;
       this.deleteAttachmentDir();
       myLoading.showLoading();
-      if (ionic.Platform.isIOS()) {
-        var iosLv = updateService.checkIosLastestVersion();
-        if (!iosLv) {
-          alert("当前不是最新版本，需完全退出重启应用选择安装更新！");
-          //myLoading.showNospiLoading("当前不是最新版本，需完全退出重启应用选择安装更新！");
-          var options = {
-            location: 'yes',
-            clearcache: 'yes',
-            toolbar: 'yes',
-            closebuttoncaption: '返回'
-          };
-          var aKey = $rootScope.lastestVersion.appKey;
-          var url = updateUrl_ios.replace("{aKey}", aKey);
-          //alert(url);
-          $cordovaInAppBrowser.open(url, '_blank', options)
-            .then(function (event) {
+      // if (ionic.Platform.isIOS()) {
+      //   var iosLv = updateService.checkIosLastestVersion();
+      //   if (!iosLv) {
+      //     alert("当前不是最新版本，需完全退出重启应用选择安装更新！");
+      //     //myLoading.showNospiLoading("当前不是最新版本，需完全退出重启应用选择安装更新！");
+      //     var options = {
+      //       location: 'yes',
+      //       clearcache: 'yes',
+      //       toolbar: 'yes',
+      //       closebuttoncaption: '返回'
+      //     };
+      //     var aKey = $rootScope.lastestVersion.appKey;
+      //     var url = updateUrl_ios.replace("{aKey}", aKey);
+      //     //alert(url);
+      //     $cordovaInAppBrowser.open(url, '_blank', options)
+      //       .then(function (event) {
 
-            })
-            .catch(function (event) {
+      //       })
+      //       .catch(function (event) {
 
-            });
-          //myLoading.showLoading("请重启应用");
-          return false;
-        } else {
+      //       });
+      //     //myLoading.showLoading("请重启应用");
+      //     return false;
+      //   } else {
 
-        }
-      }
+      //   }
+      // }
       $http.post(UrlConfig.login, loginInfo).success(function (data) {
         if (data) {
           if (data.loginResut == "0") {
